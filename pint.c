@@ -1,12 +1,13 @@
-#include"stack.h"
+#include"monty.h"
 
 /**
  *pint - prints the value at the top of the stack
  *@head: the head of the stack
+ *@line: the line number
  *Return: void
  */
 
-void pint(stack_t **head, int line)
+void pint(stack_t **head, unsigned int line)
 {
 	if (*head == NULL)
 	{

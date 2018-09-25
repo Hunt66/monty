@@ -1,0 +1,10 @@
+#include "stack.h"
+
+/**
+ *nop - does nothing
+ *Return: void
+ */
+
+void nop(void)
+{
+}

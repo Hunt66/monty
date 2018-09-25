@@ -1,12 +1,13 @@
-#include "stack.h"
+#include "monty.h"
 
 /**
  *pop - removes the top of the stack
  *@head: the head of the stack
+ *@line: the line number
  *Return: void
  */
 
-void pop(stack_t **head, int line)
+void pop(stack_t **head, unsigned int line)
 {
 	stack_t *current = NULL;
 

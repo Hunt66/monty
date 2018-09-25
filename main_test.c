@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "monty.h"
 
 int main(void)
 {
@@ -6,7 +6,30 @@ int main(void)
 	push(0, &head);
 	push(1, &head);
 	push(2, &head);
-	push(3, &head);
+	push(14, &head);
+	push(-4, &head);
+	push(-5, &head);
+	push(-6, &head);
+	printf("pushed\n");
+	pall(&head);
+	swap(&head, 1);
+	printf("swapped\n");
+	pall(&head);
+	add(&head, 1);
+	printf("added\n");
+	pall(&head);
+	sub(&head, 1);
+	nop();
+	printf("subbed and nop\n");
+	pall(&head);
+	_div(&head, 1);
+	printf("divided\n");
+	pall(&head);
+	mul(&head, 1);
+	printf("multiplied\n");
+	pall(&head);
+	mod(&head, 1);
+	printf("modded\n");
 	pall(&head);
 	pint(&head, 1);
 	pop(&head, 1);
