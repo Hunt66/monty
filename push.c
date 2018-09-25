@@ -8,9 +8,9 @@
  *Return: head of stack
  */
 
-stack_t push(int num, stack_t **head)
+stack_t *push(int num, stack_t **head)
 {
-	stack_t new = NULL;
+	stack_t *new = NULL;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
