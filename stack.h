@@ -42,7 +42,8 @@ typedef struct instruction_s
 
 stack_t *push(int num, stack_t **head);
 void pall(stack_t **head);
-
+void pint(stack_t **head, int line);
+void pop(stack_t **head, int line);
 
 
 #endif
