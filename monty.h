@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <string.h>
@@ -42,8 +43,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+stack_t *push(int num, stack_t **head);
+void pall(stack_t **head);
+void pint(stack_t **head, int line);
+void pop(stack_t **head, int line);
 
-
-ssize_t read_textfile(const char *filename, size_t letters);
 
 #endif
