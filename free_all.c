@@ -7,6 +7,20 @@
  *Return: void
  */
 
-void free_all(stack_t stack, unsigned int line_number)
+void free_all(stack_t **stack, unsigned int line_number)
 {
-	
+	stack_t *current = NULL;
+
+	if (*stack == NULL)
+		return;
+
+	current = *stack;
+	while (*stack != NULL)
+	{
+		*stack = (*stack)->next;
+		free(current);
+		current = *stack;
+	}
+
+	/*freeing line list goes here possibley */
+}
