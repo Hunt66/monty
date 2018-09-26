@@ -2,28 +2,28 @@
 
 /**
  *swap - swaps the first two lines of the stack
- *@head: the head of the stack
- *@line: the line number
+ *@stack: the head of the stack
+ *@line_number: the line number
  *Return: void
  */
 
-void swap(stack_t **head, unsigned int line)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = NULL;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		printf("L%d: can't swap, stack too short\n", line);
+		printf("L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
 
-	current = *head;
+	current = *stack;
 	current = current->next;
-	(*head)->next = current->next;
-	current->next = *head;
+	(*stack)->next = current->next;
+	current->next = *stack;
 	current->prev = NULL;
-	(*head)->prev = current;
+	(*stack)->prev = current;
 	current->prev = NULL;
-	*head = current;
+	*stack = current;
 }

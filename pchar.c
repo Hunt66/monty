@@ -2,26 +2,26 @@
 
 /**
  *pchar - prints the ascii interpratation of the top stack number
- *@head: the head of the stack
- *@line: line number
+ *@stack: the head of the stack
+ *@line_number: line number
  *Return: void
  */
 
-void pchar(stack_t **head, unsigned int line)
+void pchar(stack_t **stack, unsigned int line_number)
 {
-	if (*head == NULL)
+	if (*stack == NULL)
 	{
-		printf("L%d: can't pchar, stack empty\n", line);
+		printf("L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
 
-	if ((*head)->n < 0 || (*head)->n > 127)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
-		printf("L%d: can't pchar, value out of range\n", line);
+		printf("L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
 
-	printf("%c\n", (*head)->n);
+	printf("%c\n", (*stack)->n);
 }

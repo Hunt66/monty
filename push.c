@@ -4,11 +4,11 @@
 /**
  *push - pushes a number to the stack
  *@num: the number we are to push to the stack
- *@head: the head of the list
+ *@stack: the head of the list
  *Return: head of stack
  */
 
-stack_t *push(int num, stack_t **head)
+void push(int num, stack_t **stack)
 {
 	stack_t *new = NULL;
 
@@ -17,15 +17,14 @@ stack_t *push(int num, stack_t **head)
 		exit(10);
 	new->n = num;
 
-	if (*head == NULL)
+	if (*stack == NULL)
 	{
-		*head = new;
+		*stack = new;
 		new->next = NULL;
 		new->prev = NULL;
-		return (*head);
+		return;
 	}
-	(*head)->prev = new;
-	new->next = *head;
-	*head = new;
-	return (*head);
+	(*stack)->prev = new;
+	new->next = *stack;
+	*stack = new;
 }

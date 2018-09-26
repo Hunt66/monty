@@ -2,14 +2,16 @@
 
 /**
  *pall - prints all in stack
- *@head: head of the stack
+ *@stack: head of the stack
+ *@line_number: line number
  *Return: void
  */
 
-void pall(stack_t **head)
+void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *head;
+	stack_t *current = *stack;
 
+	(void)line_number;
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);

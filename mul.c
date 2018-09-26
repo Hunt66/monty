@@ -2,26 +2,26 @@
 
 /**
  *mul - multiplies the top two elaments of the stack
- *@head: the head of the stack
- *@line: the line number
+ *@stack: the head of the stack
+ *@line_number: the line number
  *Return: void
  */
 
-void mul(stack_t **head, unsigned int line)
+void mul(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = NULL;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		printf("L%d: can't mul, stack too short", line);
+		printf("L%d: can't mul, stack too short", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
 
-	current = *head;
+	current = *stack;
 	current = current->next;
-	current->n = current->n * (*head)->n;
-	free(*head);
+	current->n = current->n * (*stack)->n;
+	free(*stack);
 	current->prev = NULL;
-	*head = current;
+	*stack = current;
 }

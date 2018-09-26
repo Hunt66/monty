@@ -2,33 +2,33 @@
 
 /**
  *_div - divedes the second to top elament of the stack by the top elament
- *@head: the head of the stack
- *@line: the line number
+ *@stack: the head of the stack
+ *@line_number: the line number
  *Return: void
  */
 
-void _div(stack_t **head, unsigned int line)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = NULL;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		printf("L%d: can't div, stack too short\n", line);
+		printf("L%d: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
 
-	if ((*head)->n == 0)
+	if ((*stack)->n == 0)
 	{
-		printf("L%d: division by zero\n", line);
+		printf("L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
 
-	current = *head;
+	current = *stack;
 	current = current->next;
-	current->n = current->n / (*head)->n;
+	current->n = current->n / (*stack)->n;
 	current->prev = NULL;
-	free(*head);
-	*head = current;
+	free(*stack);
+	*stack = current;
 }

@@ -40,20 +40,23 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-stack_t *push(int num, stack_t **head);
-void pall(stack_t **head);
-void pint(stack_t **head, unsigned int line);
-void pop(stack_t **head, unsigned int line);
-void swap(stack_t **head, unsigned int line);
-void add(stack_t **head, unsigned int line);
-void nop(void);
-void sub(stack_t **head, unsigned int line);
-void _div(stack_t **head, unsigned int line);
-void mul(stack_t **head, unsigned int line);
-void mod(stack_t **head, unsigned int line);
-void pchar(stack_t **head, unsigned int line);
-
-
+void push(int num, stack_t **stack);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
 
 
 #endif

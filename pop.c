@@ -2,32 +2,32 @@
 
 /**
  *pop - removes the top of the stack
- *@head: the head of the stack
- *@line: the line number
+ *@stack: the head of the stack
+ *@line_number: the line number
  *Return: void
  */
 
-void pop(stack_t **head, unsigned int line)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = NULL;
 
-	if (*head == NULL)
+	if (*stack == NULL)
 	{
-		printf("L%d: can't pop an empty stack\n", line);
+		printf("L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
-	current = *head;
+	current = *stack;
 	if (current->next == NULL)
 	{
 		free(current);
-		*head = NULL;
+		*stack = NULL;
 	}
 	else
 	{
-		*head = current->next;
+		*stack = current->next;
 		free(current);
-		(*head)->prev = NULL;
+		(*stack)->prev = NULL;
 	}
 
 }

@@ -2,18 +2,18 @@
 
 /**
  *pint - prints the value at the top of the stack
- *@head: the head of the stack
- *@line: the line number
+ *@stack: the head of the stack
+ *@line_number: the line number
  *Return: void
  */
 
-void pint(stack_t **head, unsigned int line)
+void pint(stack_t **stack, unsigned int line_number)
 {
-	if (*head == NULL)
+	if (*stack == NULL)
 	{
-		printf("L%d: can't pint, stack empty\n", line);
+		printf("L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
-	printf("%d\n", (*head)->n);
+	printf("%d\n", (*stack)->n);
 }

@@ -2,26 +2,26 @@
 
 /**
  *add - adds the top two elaments of the stack
- *@head: head of stack
- *@line: line number
+ *@stack: head of stack
+ *@line_number: line number
  *Return: void
  */
 
-void add(stack_t **head, unsigned int line)
+void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *next = NULL;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		printf("L%d: can't add, stack too short\n", line);
+		printf("L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
 
-	next = *head;
+	next = *stack;
 	next = next->next;
-	next->n = next->n + (*head)->n;
-	free(*head);
+	next->n = next->n + (*stack)->n;
+	free(*stack);
 	next->prev = NULL;
-	*head = next;
+	*stack = next;
 }
