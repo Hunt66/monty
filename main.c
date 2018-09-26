@@ -4,13 +4,13 @@
 int main (int argc, char *argv[])
 {
 	FILE *monty_file_pointer;
-	int line_number = 0, op;
+	int line_number = 0, op = 0;
 	size_t line_buff_size = 80;
 	char *line_buff;
 	char *opcode;
 	char *command;
 	const char s[2] = " ";
-	list_t *h;
+	list_t *h = NULL;
 
 
 	if (argc != 2)
@@ -41,6 +41,14 @@ int main (int argc, char *argv[])
 			opcode = "-1";
 		}
 		printf( "command: %s\nopcode: %s\n", command, opcode );
+		while(opcode[op]){
+			if (opcode[op++] > 80 || opcode[op] > 89)
+			{
+				printf("%s not a number\n", opcode);
+				return(0);
+			}
+		}
+			
 		op = atoi(opcode);
 		add_node_end(&h, command, op);
 	}
@@ -49,5 +57,3 @@ int main (int argc, char *argv[])
 	fflush(stdout);
 
 }
-
-
