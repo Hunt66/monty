@@ -1,5 +1,5 @@
-#ifndef STACK_H
-#define STACK_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,6 +7,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
