@@ -88,7 +88,7 @@ int main (int argc, char *argv[])
 
 		/* get the first token */
 		command = strtok(line_buff, s);
-		if (strcmp("pull", command))
+		if (strcmp("push", command))
 			opcode = strtok(NULL, s);
 		if (opcode)
 		{
