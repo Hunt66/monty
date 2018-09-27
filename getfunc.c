@@ -21,6 +21,7 @@ void (*getfunc(char *s))(stack_t **stack, unsigned int num)
 			{"push", push},
 			{"pall", pall},
 			{"pop", pop},
+			{"pint", pint},
 			{"swap", swap},
 			{"add", add},
 			{"nop", nop},
