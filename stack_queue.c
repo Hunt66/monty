@@ -7,7 +7,7 @@
  *Return: void
  */
 
-void stack(stack_t **stack, unsigned int line_number)
+void stack(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
 {
 
 
@@ -23,7 +23,7 @@ void stack(stack_t **stack, unsigned int line_number)
  */
 
 
-void queue(stack_t **stack, unsigned int line_number)
+void queue(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
 {
 
 
