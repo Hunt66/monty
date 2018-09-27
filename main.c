@@ -51,6 +51,7 @@ void (*getfunc(char *s))
 	return(NULL);
 }
 
+list_t *h = NULL;
 
 int main (int argc, char *argv[])
 {
@@ -62,7 +63,6 @@ int main (int argc, char *argv[])
 	char *command;
 	char *opcode = NULL;
 	const char s[2] = " ";
-	list_t *h = NULL;
 	stack_t *stack = NULL;
 
 
