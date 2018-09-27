@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "monty.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,7 +11,7 @@
  * Return: ptr to new head
  */
 
-list_t *add_node_end(list_t **head, const char *str, int op)
+list_t *add_node_end(list_t **head, const char *str, int push_num)
 {
 	list_t *new;
 	list_t *h;
@@ -28,6 +28,7 @@ list_t *add_node_end(list_t **head, const char *str, int op)
 		i++;
 	new->len = i;
 	new->next = NULL;
+	new->num = push_num;
 	if (*head == NULL)
 	{
 		*head = new;
@@ -37,6 +38,5 @@ list_t *add_node_end(list_t **head, const char *str, int op)
 		h = h->next;
 	h->next = new;
 	new->prev = h;
-	new->opcode = op;
 	return (*head);
 }

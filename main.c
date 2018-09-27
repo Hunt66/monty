@@ -19,8 +19,9 @@ int main (int argc, char *argv[])
 	char *line_buff;
 	char *command;
 	char *num = NULL;
-	const char s[2] = " ";
+	const char s[6] = " \t\n";
 	stack_t *stack = NULL;
+	list_t *current = NULL;
 
 	if (argc != 2)
 	{
@@ -38,7 +39,6 @@ int main (int argc, char *argv[])
 
 	while(-1 != getline(&line_buff, &ln_bf_sz, mnty_fp))
 	{
-	    ++line_number;
 	    op = 0;
 	    num = NULL;
 		command = strtok(line_buff, s);
@@ -55,8 +55,13 @@ int main (int argc, char *argv[])
 	fclose(mnty_fp);
 	print_list(h);
 	fflush(stdout);
-	while(h)
-		getfunc(command)(&stack, line_number);
+	current = h;
+	while(current)
+	{	
+	    ++line_number;
+		getfunc(current->str)(&stack, line_number);
+		current = current->next;
+	}
 	return(0);
 
 }

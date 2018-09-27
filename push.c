@@ -17,7 +17,7 @@ void push(stack_t **stack, unsigned int line_number)
 	list_t *current = NULL;
 
 	current = h;
-	for (i = 0; i < line_number; i++)
+	for (i = 1; i < line_number; i++)
 		current = current->next;
 
 	num = current->num;
