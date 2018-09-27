@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
 	}
 	printf("opening %s\n", argv[1]);
 
-
 	file_to_linkedlist(argv[1]);
 
 	print_list(h);
@@ -33,7 +32,8 @@ int main(int argc, char *argv[])
 	while (current)
 	{
 	    line_number += 1;
-		getfunc(current->str)(&stack, line_number);
+	    if (strcmp("BLANK", current->str) != 0)
+			getfunc(current->str)(&stack, line_number);
 		current = current->next;
 	}
 	return (0);

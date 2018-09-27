@@ -24,9 +24,22 @@ int file_to_linkedlist(char *filename)
 	{
 	    op = 0;
 	    num = NULL;
-		command = strtok(line_buff, "\t\n ");
+	    while(line_buff[op] != '\n')
+	    {
+	    	if (line_buff[op] != ' ' && line_buff[op] != '\t')
+		    	break;
+	    	op++;
+	    }
+	    if (line_buff[op] != '\n')
+	    {
+			printf("command is: %s\n", command);
+			command = strtok(line_buff, " \t\n");
+	    }
+		else
+			command = "BLANK";
+
 		if (strcmp("push", command) == 0)
-			num = strtok(NULL, "\t\n ");
+			num = strtok(NULL, " \t\n");
 		/* check for num is NAAN */
 		if (num)
 			op = atoi(num);
@@ -36,5 +49,6 @@ int file_to_linkedlist(char *filename)
 	}
 	printf("---OUT OF GETLINE---\n");
 	fclose(mnty_fp);
+	free(line_buff);
 	return (0);
 }
