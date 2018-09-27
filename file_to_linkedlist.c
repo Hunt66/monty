@@ -17,37 +17,31 @@ int file_to_linkedlist(char *filename)
 	mnty_fp = fopen(filename, "r");
 	if (mnty_fp == NULL)
 		return (0);
-
 	line_buff = malloc(ln_bf_sz * sizeof(char));
-
 	while (-1 != getline(&line_buff, &ln_bf_sz, mnty_fp))
 	{
-	    op = 0;
-	    num = NULL;
-	    while(line_buff[op] != '\n')
-	    {
-	    	if (line_buff[op] != ' ' && line_buff[op] != '\t')
-		    	break;
-	    	op++;
-	    }
-	    if (line_buff[op] != '\n')
-	    {
+		op = 0;
+		num = NULL;
+		while (line_buff[op] != '\n')
+		{
+			if (line_buff[op] != ' ' && line_buff[op] != '\t')
+				break;
+			op++;
+		}
+		if (line_buff[op] != '\n')
+		{
 			command = strtok(line_buff, " \t\n");
-	    }
+		}
 		else
 			command = "BLANK";
-
 		if (strcmp("push", command) == 0)
 			num = strtok(NULL, " \t\n");
-		/* check for num is NAAN */
 		if (num)
 			op = atoi(num);
 		else
 			op = 0;
 		add_node_end(&h, command, op);
 	}
-
-
 	fclose(mnty_fp);
 	free(line_buff);
 	return (0);
