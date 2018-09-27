@@ -7,6 +7,7 @@
  * add_node_end - adds a new node at the end of a list_t list.
  * @head: start of list
  * @str: to add
+ * @push_num: number to be pushed into stack
  *
  * Return: ptr to new head
  */

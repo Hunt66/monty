@@ -10,16 +10,9 @@ list_t *h = NULL;
  * function (via a function pointer) prints characters
 */
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	FILE *mnty_fp;
 	unsigned int line_number = 0;
-	int op = 0;
-	size_t ln_bf_sz = 80;
-	char *line_buff;
-	char *command;
-	char *num = NULL;
-	const char s[6] = " \t\n";
 	stack_t *stack = NULL;
 	list_t *current = NULL;
 
@@ -31,37 +24,18 @@ int main (int argc, char *argv[])
 	}
 	printf("opening %s\n", argv[1]);
 
-	mnty_fp = fopen(argv[1], "r");
-	if (mnty_fp == NULL)
-		return (0);
 
-	line_buff = malloc(ln_bf_sz * sizeof(char));
+	file_to_linkedlist(argv[1]);
 
-	while(-1 != getline(&line_buff, &ln_bf_sz, mnty_fp))
-	{
-	    op = 0;
-	    num = NULL;
-		command = strtok(line_buff, s);
-		if (strcmp("push", command) == 0)
-			num = strtok(NULL, s);
-		/* check for num is NAAN */
-		if (num)	
-			op = atoi(num);
-		else
-			op = 0;
-		add_node_end(&h, command, op);
-	}
-	printf("---OUT OF GETLINE---\n");
-	fclose(mnty_fp);
 	print_list(h);
 	fflush(stdout);
 	current = h;
-	while(current)
-	{	
-	    ++line_number;
+	while (current)
+	{
+	    line_number += 1;
 		getfunc(current->str)(&stack, line_number);
 		current = current->next;
 	}
-	return(0);
+	return (0);
 
 }
