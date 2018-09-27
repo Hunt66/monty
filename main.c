@@ -12,30 +12,28 @@ list_t *h = NULL;
 
 int main(int argc, char *argv[])
 {
-	unsigned int line_number = 0;
+	unsigned int line_number = 1;
 	stack_t *stack = NULL;
 	list_t *current = NULL;
 
 	if (argc != 2)
 	{
 		printf("USAGE: monty file");
+		free_all(&stack, 1);
 		exit(EXIT_FAILURE);
 		return (0);
 	}
-	printf("opening %s\n", argv[1]);
-
 
 	file_to_linkedlist(argv[1]);
 
-	print_list(h);
 	fflush(stdout);
-	current = h;
-	while (current)
+	for (current = h; current; line_number++)
 	{
-	    line_number += 1;
-		getfunc(current->str)(&stack, line_number);
+		if (strcmp("BLANK", current->str) != 0)
+			getfunc(current->str)(&stack, line_number);
 		current = current->next;
 	}
+	if (stack)
+		free_all(&stack, 1);
 	return (0);
-
 }

@@ -14,23 +14,27 @@ void free_all(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	crnt = h;
-	while (h != NULL)
-	{
-		h = h->next;
-		free(crnt);
-		crnt = h;
-	}
 
-	if (*stack == NULL)
-		return;
+	if (h)
+	{
+		while (h != NULL)
+		{
+			h = h->next;
+			free(crnt->str);
+			free(crnt);
+			crnt = h;
+		}
+	}
 
 	current = *stack;
-	while (*stack != NULL)
+	if (*stack)
 	{
-		*stack = (*stack)->next;
-		free(current);
-		current = *stack;
+		while (*stack != NULL)
+		{
+			*stack = (*stack)->next;
+			free(current);
+			current = *stack;
+		}
 	}
 
-	/*freeing line list goes here possibley */
 }
