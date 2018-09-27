@@ -57,12 +57,12 @@ typedef struct list_s
 {
 	char *str;
 	unsigned int len;
-	int opcode;
+	int num;
 	struct list_s *next;
 	struct list_s *prev;
 } list_t;
 
-
+extern list_t *h;
 
 void push(stack_t **stack, unsigned int num);
 void pall(stack_t **stack, unsigned int line_number);
@@ -87,7 +87,6 @@ void (*getfunc(char *s))(stack_t **stack,
                            unsigned int line_number);
 void free_all(stack_t **stack, unsigned int line_number);
 
-extern list_t *h;
 
 int _putchar(char c);
 size_t print_list(const list_t *h);

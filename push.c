@@ -9,11 +9,18 @@
  *Return: head of stack
  */
 
-void push(stack_t **stack, unsigned int num)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new = NULL;
+	int num;
+	unsigned int i;
+	list_t *current = NULL;
 
-	// (void)line_number;
+	current = h;
+	for (i = 0; i < line_number; i++)
+		current = current->next;
+
+	num = current->num;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 		exit(10);
