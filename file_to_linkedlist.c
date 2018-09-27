@@ -47,9 +47,9 @@ int file_to_linkedlist(char *filename)
 			op = 0;
 		add_node_end(&h, command, op);
 	}
-	free(line_buff);
+
 	printf("---OUT OF GETLINE---\n");
 	fclose(mnty_fp);
-	free(line_buff);
+
 	return (0);
 }
