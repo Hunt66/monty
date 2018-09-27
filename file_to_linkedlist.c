@@ -9,6 +9,7 @@ int file_to_linkedlist(char *filename)
 {
 	FILE *mnty_fp;
 	int op = 0;
+	unsigned int line_number = 0;
 	size_t ln_bf_sz = 80;
 	char *line_buff;
 	char *command;
@@ -22,6 +23,42 @@ int file_to_linkedlist(char *filename)
 	{
 		op = 0;
 		num = NULL;
+		line_number++;
+		command = line_to_command(line_buff);
+		if (strcmp("push", command) == 0)
+		{
+			num = strtok(NULL, " \t\n");
+			for (op = 0; num[op] != '\0'; op++)
+			{
+				if (!op && (num[op] == '+' || num[op] == '-'))
+					continue;
+				if (num[op] > '9' || num[op] < '0')
+					fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			}
+		}
+		if (num)
+			op = atoi(num);
+		else
+			op = 0;
+		add_node_end(&h, command, op);
+	}
+	fclose(mnty_fp);
+	free(line_buff);
+	return (0);
+}
+
+/**
+ * line_to_command - takes a file name and makes a linked list
+ *
+ * @line_buff: line to turn to a command
+ * Return: 0 if sucess else errcode
+*/
+
+char *line_to_command(char *line_buff)
+{
+		char *command;
+		int op = 0;
+
 		while (line_buff[op] != '\n')
 		{
 			if (line_buff[op] != ' ' && line_buff[op] != '\t')
@@ -34,22 +71,6 @@ int file_to_linkedlist(char *filename)
 		}
 		else
 			command = "BLANK";
-		if (strcmp("push", command) == 0)
-			num = strtok(NULL, " \t\n");
-		for (op = 0; num[op] != '\0'; op++)
-		{
-			if (!op && (num[op] == '+' || num[op] == '-'))
-				continue;
-			if (num[op] > '9' || num[op] < '0')
-				num[op] = '\0';
- 		}
-		if (num)
-			op = atoi(num);
-		else
-			op = 0;
-		add_node_end(&h, command, op);
-	}
-	fclose(mnty_fp);
-	free(line_buff);
-	return (0);
+		return (command);
 }
+

@@ -80,6 +80,7 @@ void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 
+char *line_to_command(char *line_buff);
 
 int file_to_linkedlist(char *filename);
 
