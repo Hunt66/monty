@@ -15,14 +15,14 @@
  * function (via a function pointer) prints characters
 */
 
-int (*getfunc(char *s))
+void (*getfunc(char *s))
 (stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 
 	instruction_t arr[] = {
 			{"push", push},
-			{"pint", pint},
+			{"pall", pall},
 			// {"pop", pop},
 			// {"swap", swap},
 			// {"add", add},
@@ -48,8 +48,6 @@ int (*getfunc(char *s))
 		i++;
 	}
 	return (_negativeone);
-
-
 }
 
 
@@ -95,7 +93,7 @@ int main (int argc, char *argv[])
 			while(opcode[op]){
 				if (opcode[op++] > 80 || opcode[op] > 89)
 				{
-					printf("%s not a number\n", opcode);
+					printf("%s ---NAAN--- not a number\n", opcode);
 					return(0);
 				}
 			}				
@@ -106,8 +104,10 @@ int main (int argc, char *argv[])
 		getfunc(command)(&stack, line_number);
 		add_node_end(&h, command, op);
 	}
-	printf("\n");
+	printf("---OUT OF GETLINE---\n");
+	close(mnty_fp);
 	print_list(h);
 	fflush(stdout);
+	return(0);
 
 }

@@ -44,7 +44,7 @@ typedef struct instruction_s
 } instruction_t;
 
 
-void push(int num, stack_t **stack);
+void push(stack_t **stack, int num);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
@@ -63,5 +63,8 @@ void stack(stack_t **stack, unsigned int line_number);
 void queue(stack_t **stack, unsigned int line_number);
 
 int _negativeone(stack_t **stack, unsigned int line_number);
+void (*getfunc(char *s))(stack_t **stack,
+                           unsigned int line_number);
+
 
 #endif

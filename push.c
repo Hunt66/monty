@@ -8,7 +8,8 @@
  *Return: head of stack
  */
 
-void push(int num, stack_t **stack)
+
+void push(stack_t **stack, int num)
 {
 	stack_t *new = NULL;
 
