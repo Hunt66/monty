@@ -1,5 +1,5 @@
 #include "monty.h"
-#include "lists.h"
+
 
 
 /**
@@ -64,6 +64,7 @@ int main (int argc, char *argv[])
 	const char s[2] = " ";
 	list_t *h = NULL;
 	stack_t *stack = NULL;
+
 
 
 	if (argc != 2)
