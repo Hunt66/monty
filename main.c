@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		printf("USAGE: monty file");
+		free_all(&stack, 1);
 		exit(EXIT_FAILURE);
 		return (0);
 	}
@@ -36,6 +37,7 @@ int main(int argc, char *argv[])
 			getfunc(current->str)(&stack, line_number);
 		current = current->next;
 	}
+	free_all(&stack, line_number);
 	return (0);
-
+	
 }

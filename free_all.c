@@ -14,15 +14,14 @@ void free_all(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	crnt = h;
-	while (h != NULL)
+	while (crnt != NULL)
 	{
 		h = h->next;
 		free(crnt);
+		free(crnt->str);
 		crnt = h;
 	}
 
-	if (*stack == NULL)
-		return;
 
 	current = *stack;
 	while (*stack != NULL)
