@@ -26,11 +26,14 @@ void free_all(stack_t **stack, unsigned int line_number)
 	}
 
 	current = *stack;
-	while (*stack != NULL)
+	if (*stack)
 	{
-		*stack = (*stack)->next;
-		free(current);
-		current = *stack;
+		while (*stack != NULL)
+		{
+			*stack = (*stack)->next;
+			free(current);
+			current = *stack;
+		}
 	}
 
 	/*freeing line list goes here possibley */
