@@ -1,56 +1,14 @@
 #include "monty.h"
-
-
+list_t *h = NULL;
 
 /**
- * getfunc - function takes in a specifier in the form of a char
- * and returns the associated function to print an argument of that type
+ * main - parses monty file and calls appropriate method
  *
- * @s: type char, the specifier passed in
- *
- * Description: an array of structs is initialized with all possible specifiers
- * and the associated functions that will print arguments of that type
- *
- * Return: integer value, the number of characters printed when the called
+ * @argc: argument count
+ * @argv: argument array
+ * Return: 0 if sucess else errcode
  * function (via a function pointer) prints characters
 */
-
-void (*getfunc(char *s))
-(stack_t **stack, unsigned int line_number)
-{
-	int i = 0;
-
-	instruction_t arr[] = {
-			{"push", push},
-			{"pall", pall},
-			// {"pop", pop},
-			// {"swap", swap},
-			// {"add", add},
-			// {"nop", nop},
-			// {"sub", sub},
-			// {"div", div},
-			// {"mul", mul},
-			// {"mod", mod},
-			// {"pchar", pchar},
-			// {"pstr", pstr},
-			// {"rotl", rotl},
-			// {"rotr", rotr},
-			// {"stack", stack},
-			// {"queue", queue},
-			{'\0', NULL}
-		};
-
-
-	while (arr[i].opcode != '\0')
-	{
-		if (!strcmp(s, arr[i].opcode))
-			return (arr[i].f);
-		i++;
-	}
-	// return (_negativeone);
-	return(NULL);
-}
-
 
 int main (int argc, char *argv[])
 {
@@ -60,12 +18,9 @@ int main (int argc, char *argv[])
 	size_t ln_bf_sz = 80;
 	char *line_buff;
 	char *command;
-	char *opcode = NULL;
+	char *num = NULL;
 	const char s[2] = " ";
-	list_t *h = NULL;
 	stack_t *stack = NULL;
-
-
 
 	if (argc != 2)
 	{
@@ -81,36 +36,27 @@ int main (int argc, char *argv[])
 
 	line_buff = malloc(ln_bf_sz * sizeof(char));
 
-	// read each line and print it to the screen
 	while(-1 != getline(&line_buff, &ln_bf_sz, mnty_fp))
 	{
 	    ++line_number;
 	    op = 0;
-	    opcode = NULL;
-		/* get the first token */
+	    num = NULL;
 		command = strtok(line_buff, s);
 		if (strcmp("push", command) == 0)
-			opcode = strtok(NULL, s);
-		if (opcode)
-		{
-			while(opcode[op]){
-				if (opcode[op++] > 80 || opcode[op] > 89)
-				{
-					printf("%s ---NAAN--- not a number\n", opcode);
-					return(0);
-				}
-			}		
-			op = atoi(opcode);
-		}
+			num = strtok(NULL, s);
+		/* check for num is NAAN */
+		if (num)	
+			op = atoi(num);
 		else
-			op = -1;
+			op = 0;
 		add_node_end(&h, command, op);
-		getfunc(command)(&stack, line_number);
 	}
 	printf("---OUT OF GETLINE---\n");
-	// close(mnty_fp);
+	fclose(mnty_fp);
 	print_list(h);
 	fflush(stdout);
+	while(h)
+		getfunc(command)(&stack, line_number);
 	return(0);
 
 }
