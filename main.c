@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
 			getfunc(current->str)(&stack, line_number);
 		current = current->next;
 	}
-
+	if (stack)
+		free_all(&stack, 1);
 	return (0);
 }

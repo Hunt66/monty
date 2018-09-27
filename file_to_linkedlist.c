@@ -32,7 +32,6 @@ int file_to_linkedlist(char *filename)
 	    }
 	    if (line_buff[op] != '\n')
 	    {
-			printf("command is: %s\n", command);
 			command = strtok(line_buff, " \t\n");
 	    }
 		else
@@ -48,8 +47,8 @@ int file_to_linkedlist(char *filename)
 		add_node_end(&h, command, op);
 	}
 
-	printf("---OUT OF GETLINE---\n");
-	fclose(mnty_fp);
 
+	fclose(mnty_fp);
+	free(line_buff);
 	return (0);
 }
