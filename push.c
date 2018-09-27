@@ -9,7 +9,7 @@
  */
 
 
-void push(stack_t **stack, int num)
+void push(stack_t **stack, unsigned int num)
 {
 	stack_t *new = NULL;
 

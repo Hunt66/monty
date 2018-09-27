@@ -47,7 +47,8 @@ void (*getfunc(char *s))
 			return (arr[i].f);
 		i++;
 	}
-	return (_negativeone);
+	// return (_negativeone);
+	return(NULL);
 }
 
 
@@ -82,11 +83,12 @@ int main (int argc, char *argv[])
 	// read each line and print it to the screen
 	while(-1 != getline(&line_buff, &ln_bf_sz, mnty_fp))
 	{
-	    printf("%d: %s", ++line_number, line_buff);
-
+	    ++line_number;
+	    op = 0;
+	    opcode = NULL;
 		/* get the first token */
 		command = strtok(line_buff, s);
-		if (strcmp("push", command))
+		if (strcmp("push", command) == 0)
 			opcode = strtok(NULL, s);
 		if (opcode)
 		{
@@ -96,16 +98,16 @@ int main (int argc, char *argv[])
 					printf("%s ---NAAN--- not a number\n", opcode);
 					return(0);
 				}
-			}				
+			}		
 			op = atoi(opcode);
 		}
 		else
 			op = -1;
-		getfunc(command)(&stack, line_number);
 		add_node_end(&h, command, op);
+		getfunc(command)(&stack, line_number);
 	}
 	printf("---OUT OF GETLINE---\n");
-	close(mnty_fp);
+	// close(mnty_fp);
 	print_list(h);
 	fflush(stdout);
 	return(0);
