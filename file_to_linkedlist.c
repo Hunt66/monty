@@ -36,6 +36,13 @@ int file_to_linkedlist(char *filename)
 			command = "BLANK";
 		if (strcmp("push", command) == 0)
 			num = strtok(NULL, " \t\n");
+		for (op = 0; num[op] != '\0'; op++)
+		{
+			if (!op && (num[op] == '+' || num[op] == '-'))
+				continue;
+			if (num[op] > '9' || num[op] < '0')
+				num[op] = '\0';
+ 		}
 		if (num)
 			op = atoi(num);
 		else
