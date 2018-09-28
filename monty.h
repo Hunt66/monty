@@ -81,6 +81,7 @@ void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 
 char *line_to_command(char *line_buff);
+char *token_check(char *num);
 
 int file_to_linkedlist(char *filename, stack_t *stack);
 

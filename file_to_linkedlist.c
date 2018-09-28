@@ -3,7 +3,8 @@
  * file_to_linkedlist - takes a file name and makes a linked list
  *
  * @filename: path to file to open
- * Return: 0 if sucess else errcode
+ * @stack: there in case of err for free
+ * Return: 0 if success else errcode
 */
 int file_to_linkedlist(char *filename, stack_t *stack)
 {
@@ -28,12 +29,8 @@ int file_to_linkedlist(char *filename, stack_t *stack)
 		if (strcmp("push", command) == 0)
 		{
 			num = strtok(NULL, " \n");
-			for (op = 0; num[op] != '\0'; op++)
-			{
-				if (num[op] == '-' && op == 0 && num[op+1])
-					continue;
-				if (num[op] > '9' || num[op] < '0' || num[op] ==
-					'+' || num[op] == '-')
+			num = token_check(num);
+			if (num == NULL)
 				{
 					fprintf(stderr,
 						"L%d: usage: push integer\n",
@@ -43,12 +40,9 @@ int file_to_linkedlist(char *filename, stack_t *stack)
 					free_all(&stack, 1);
 					exit(EXIT_FAILURE);
 				}
-			}
 		}
 		if (num)
 			op = atoi(num);
-		else
-			op = 0;
 		add_node_end(&h, command, op);
 	}
 	fclose(mnty_fp);
@@ -81,4 +75,29 @@ char *line_to_command(char *line_buff)
 		else
 			command = "BLANK";
 		return (command);
+}
+
+
+/**
+ * token_to_int - checks our token for int-ynesss
+ *
+ * @num: token to check
+ * Return: 0 if sucess else errcode
+*/
+
+char *token_check(char *num)
+{
+	int i = 0;
+
+	if (num == NULL)
+		return (NULL);
+
+	for (i = 0; num[i] != '\0'; i++)
+	{
+		if (num[i] == '-' && i == 0 && num[i + 1])
+			continue;
+		if (num[i] > '9' || num[i] < '0')
+			return (NULL);
+	}
+	return (num);
 }
