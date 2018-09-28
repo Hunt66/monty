@@ -31,15 +31,15 @@ int file_to_linkedlist(char *filename, stack_t *stack)
 			num = strtok(NULL, " \n");
 			num = token_check(num);
 			if (num == NULL)
-				{
-					fprintf(stderr,
-						"L%d: usage: push integer\n",
-						line_number);
-					free(line_buff);
-					fclose(mnty_fp);
-					free_all(&stack, 1);
-					exit(EXIT_FAILURE);
-				}
+			{
+				fprintf(stderr,
+					"L%d: usage: push integer\n",
+					line_number);
+				free(line_buff);
+				fclose(mnty_fp);
+				free_all(&stack, 1);
+				exit(EXIT_FAILURE);
+			}
 		}
 		if (num)
 			op = atoi(num);
@@ -79,7 +79,7 @@ char *line_to_command(char *line_buff)
 
 
 /**
- * token_to_int - checks our token for int-ynesss
+ * token_check - checks our token for int-ynesss
  *
  * @num: token to check
  * Return: 0 if sucess else errcode
