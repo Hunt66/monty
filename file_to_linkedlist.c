@@ -62,11 +62,11 @@ char *line_to_command(char *line_buff)
 		char *command;
 		int op = 0;
 
-		if (line_buff[0] == '#')
-			return ("#");
 
 		while (line_buff[op] != '\n')
 		{
+			if (line_buff[op] == '#')
+				return ("#");
 			if (line_buff[op] != ' ')
 				break;
 			op++;
