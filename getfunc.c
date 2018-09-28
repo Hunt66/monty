@@ -5,8 +5,7 @@
  * and returns the associated function to print an argument of that type
  *
  * @s: type char, the specifier passed in
- *@line_number: line number
- *
+ * @num: line number
  * Description: an array of structs is initialized with all possible specifiers
  * and the associated functions that will print arguments of that type
  *
