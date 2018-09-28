@@ -15,13 +15,18 @@
 list_t *add_node_end(list_t **head, const char *str, int push_num)
 {
 	list_t *new;
+	list_t *head;
 	size_t i = 0;
 
 	if (!head)
 		return (NULL);
 	h = *head;
 	new = malloc(sizeof(list_t));
-
+	if (!new)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	new->str = strdup(str);
 	while (str[i])
 		i++;
