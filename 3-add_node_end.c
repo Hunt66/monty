@@ -24,10 +24,9 @@ list_t *add_node_end(list_t **head, const char *str, int push_num)
 	new = malloc(sizeof(list_t));
 	if (!new)
 	{
-
-		return (NULL);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
-
 	new->str = strdup(str);
 	while (str[i])
 		i++;

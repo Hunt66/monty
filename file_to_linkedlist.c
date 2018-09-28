@@ -10,15 +10,15 @@ int file_to_linkedlist(char *filename, stack_t *stack)
 {
 	FILE *mnty_fp;
 	int op = 0;
-	unsigned int line_number = 0;
-	size_t ln_bf_sz = 80;
-	char *line_buff;
-	char *command;
-	char *num = NULL;
+	size_t line_number = 0, ln_bf_sz = 80;
+	char *line_buff, *command, *num = NULL;
 
 	mnty_fp = fopen(filename, "r");
 	if (mnty_fp == NULL)
-		return (0);
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
 	line_buff = malloc(ln_bf_sz * sizeof(char));
 	while (-1 != getline(&line_buff, &ln_bf_sz, mnty_fp))
 	{
@@ -33,7 +33,7 @@ int file_to_linkedlist(char *filename, stack_t *stack)
 			if (num == NULL)
 			{
 				fprintf(stderr,
-					"L%d: usage: push integer\n",
+					"L%zu: usage: push integer\n",
 					line_number);
 				free(line_buff);
 				fclose(mnty_fp);
