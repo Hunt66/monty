@@ -62,18 +62,22 @@ char *line_to_command(char *line_buff)
 		char *command;
 		int op = 0;
 
+		if (line_buff[0] == '#')
+			return ("COMMENT")
+
 		while (line_buff[op] != '\n')
 		{
 			if (line_buff[op] != ' ')
 				break;
 			op++;
 		}
+
 		if (line_buff[op] != '\n')
 		{
 			command = strtok(line_buff, " \n");
 		}
 		else
-			command = "BLANK";
+			return ("BLANK");
 		return (command);
 }
 
