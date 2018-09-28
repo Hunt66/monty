@@ -13,7 +13,8 @@
  * function (via a function pointer) prints characters
 */
 
-void (*getfunc(char *s))(stack_t **stack, unsigned int num)
+void (*getfunc(char *s, unsigned int line_number))
+(stack_t **stack, unsigned int num)
 {
 	int i = 0;
 
@@ -35,11 +36,15 @@ void (*getfunc(char *s))(stack_t **stack, unsigned int num)
 			{"rotr", rotr},
 			{'\0', NULL}
 		};
+
 	while (arr[i].opcode != '\0')
 	{
 		if (!strcmp(s, arr[i].opcode))
 			return (arr[i].f);
 		i++;
 	}
-	return (NULL);
+	fprintf(stderr, "L%d: unknown instruction %s\n",
+		line_number, s);
+	free_list(h);
+	exit(EXIT_FAILURE);
 }

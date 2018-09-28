@@ -86,7 +86,7 @@ char *token_check(char *num);
 
 int file_to_linkedlist(char *filename, stack_t *stack);
 
-void (*getfunc(char *s))(stack_t **stack,
+void (*getfunc(char *s, unsigned int line_number))(stack_t **stack,
                            unsigned int line_number);
 void free_all(stack_t **stack, unsigned int line_number);
 

@@ -25,6 +25,7 @@ list_t *add_node_end(list_t **head, const char *str, int push_num)
 	if (!new)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_list(*head);
 		exit(EXIT_FAILURE);
 	}
 	new->str = strdup(str);

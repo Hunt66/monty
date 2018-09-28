@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	for (current = h; current; line_number++)
 	{
 		if (strcmp("BLANK", current->str) != 0)
-			getfunc(current->str)(&stack, line_number);
+			getfunc(current->str, line_number)(&stack, line_number);
 		current = current->next;
 	}
 	if (stack)
