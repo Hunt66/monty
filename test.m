@@ -1,6 +1,8 @@
 push 6
+push -1 
+push                               6
 
-push 
+push 1
   push 2
 push 3
 
