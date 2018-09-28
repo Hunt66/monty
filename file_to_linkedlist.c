@@ -63,7 +63,7 @@ char *line_to_command(char *line_buff)
 		int op = 0;
 
 		if (line_buff[0] == '#')
-			return ("COMMENT");
+			return ("#");
 
 		while (line_buff[op] != '\n')
 		{

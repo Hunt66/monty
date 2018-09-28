@@ -74,6 +74,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+void comment(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
@@ -88,14 +89,8 @@ char *token_check(char *num);
 
 void file_to_linkedlist(char *filename, stack_t *stack);
 
-
-void (*getfunc(char *s, unsigned int line_number))(stack_t **stack,
-						   unsigned int line_number);
-
-
-
+void (*getfunc(char *s, unsigned int n))(stack_t **s, unsigned int n);
 void free_all(stack_t **stack, unsigned int line_number);
-
 
 int _putchar(char c);
 size_t print_list(const list_t *h);
