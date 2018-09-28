@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 push 
+=======
+push                               6
+>>>>>>> parent of 1ba0c5d... free
 
 push 
   push 2
