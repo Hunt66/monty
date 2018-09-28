@@ -77,7 +77,6 @@ char *line_to_command(char *line_buff)
 		return (command);
 }
 
-
 /**
  * token_check - checks our token for int-ynesss
  *
@@ -94,7 +93,7 @@ char *token_check(char *num)
 
 	for (i = 0; num[i] != '\0'; i++)
 	{
-		if (num[i] == '-' && i == 0 && num[i + 1])
+		if (i == 0 && num[0] == '-' && num[1])
 			continue;
 		if (num[i] > '9' || num[i] < '0')
 			return (NULL);

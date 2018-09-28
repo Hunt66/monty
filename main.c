@@ -18,10 +18,16 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf("USAGE: monty file");
+		fprintf(stderr, "USAGE: monty file\n");
 		free_all(&stack, 1);
 		exit(EXIT_FAILURE);
 		return (0);
+	}
+
+	if (access(argv[1], F_OK | X_OK) == -1)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
 
 	file_to_linkedlist(argv[1], stack);
