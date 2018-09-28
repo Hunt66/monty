@@ -35,5 +35,7 @@ int main(int argc, char *argv[])
 	}
 	if (stack)
 		free_all(&stack, 1);
+	if (h)
+		free_list(h);
 	return (0);
 }
