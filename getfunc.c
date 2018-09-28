@@ -13,8 +13,8 @@
  * function (via a function pointer) prints characters
 */
 
-void (*getfunc(char *s, unsigned int line_number))
-(stack_t **stack, unsigned int num)
+void (*getfunc(char *s, unsigned int line_number))(stack_t **stack,
+						   unsigned int num)
 {
 	int i = 0;
 
