@@ -27,7 +27,7 @@ int file_to_linkedlist(char *filename)
 		command = line_to_command(line_buff);
 		if (strcmp("push", command) == 0)
 		{
-			num = strtok(NULL, " \t\n");
+			num = strtok(NULL, " \n");
 			for (op = 0; num[op] != '\0'; op++)
 			{
 				if (num[op] == '-' && op == 0 && num[op+1])
@@ -67,13 +67,13 @@ char *line_to_command(char *line_buff)
 
 		while (line_buff[op] != '\n')
 		{
-			if (line_buff[op] != ' ' && line_buff[op] != '\t')
+			if (line_buff[op] != ' ')
 				break;
 			op++;
 		}
 		if (line_buff[op] != '\n')
 		{
-			command = strtok(line_buff, " \t\n");
+			command = strtok(line_buff, " \n");
 		}
 		else
 			command = "BLANK";

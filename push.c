@@ -21,8 +21,6 @@ void push(stack_t **stack, unsigned int line_number)
 
 	num = current->num;
 	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-		exit(10);
 	new->n = num;
 
 	if (*stack == NULL)

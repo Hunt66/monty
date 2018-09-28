@@ -1,6 +1,6 @@
-push 34
+push                               6
 
-push gyhh
+push 5
   push 2
 push 3
 
