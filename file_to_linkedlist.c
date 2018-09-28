@@ -30,11 +30,14 @@ int file_to_linkedlist(char *filename)
 			num = strtok(NULL, " \t\n");
 			for (op = 0; num[op] != '\0'; op++)
 			{
-				if (!op && (num[op] == '+' || num[op] == '-'))
+				if (num[op] == '-' && op == 0 && num[op+1])
 					continue;
-				if (num[op] > '9' || num[op] < '0')
+				if (num[op] > '9' || num[op] < '0' || num[op] ==
+					'+' || num[op] == '-')
 				{
-					fprintf(stderr, "L%d: usage: push integer\n", line_number);
+					fprintf(stderr,
+						"L%d: usage: push integer\n",
+						line_number);
 					exit(EXIT_FAILURE);
 				}
 			}
