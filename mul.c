@@ -1,28 +1,28 @@
 #include"monty.h"
 
 /**
- *mul - multiplies the top two elaments of the stack
- *@stack: the head of the stack
+ *mul - multiplies the top two elaments of the stck
+ *@stck: the head of the stack
  *@line_number: the line number
  *Return: void
  */
 
-void mul(stack_t **stack, unsigned int line_number)
+void mul(stack_t **stck, unsigned int line_number)
 {
 	stack_t *current = NULL;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (*stck == NULL || (*stck)->next == NULL || (*stck)->next->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't mul, stack too short", line_number);
-		free_all(stack, line_number);
+		fprintf(stderr, "L%d: can't mul, stck too short", line_number);
+		free_all(stck, line_number);
 		exit(EXIT_FAILURE);
 		return;
 	}
 
-	current = *stack;
+	current = *stck;
 	current = current->next;
-	current->n = current->n * (*stack)->n;
-	free(*stack);
+	current->n = current->n * (*stck)->n;
+	free(*stck);
 	current->prev = NULL;
-	*stack = current;
+	*stck = current;
 }
