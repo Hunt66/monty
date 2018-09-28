@@ -15,7 +15,6 @@
 list_t *add_node_end(list_t **head, const char *str, int push_num)
 {
 	list_t *new;
-	list_t *h;
 	size_t i = 0;
 
 	if (!head)
@@ -24,8 +23,8 @@ list_t *add_node_end(list_t **head, const char *str, int push_num)
 	new = malloc(sizeof(list_t));
 	if (!new)
 	{
-
-		return (NULL);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 
 	new->str = strdup(str);
