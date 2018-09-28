@@ -24,9 +24,9 @@
 
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+		int n;
+		struct stack_s *prev;
+		struct stack_s *next;
 } stack_t;
 
 /**
@@ -40,15 +40,17 @@ typedef struct stack_s
 
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+		char *opcode;
+		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
  * struct list_s - singly linked list
- * @str: string - (malloc'ed string)
+ * @str: instruction code - (malloc'ed string)
  * @len: length of the string
+ * @num: line number in file for errors handling
  * @next: points to the next node
+ * @prev: points to the next node
  *
  * Description: singly linked list node structure
  * for Holberton project
@@ -86,8 +88,12 @@ char *token_check(char *num);
 
 int file_to_linkedlist(char *filename, stack_t *stack);
 
+
 void (*getfunc(char *s, unsigned int line_number))(stack_t **stack,
                            unsigned int line_number);
+
+
+
 void free_all(stack_t **stack, unsigned int line_number);
 
 
