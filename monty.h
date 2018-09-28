@@ -82,7 +82,7 @@ void rotr(stack_t **stack, unsigned int line_number);
 
 char *line_to_command(char *line_buff);
 
-int file_to_linkedlist(char *filename);
+int file_to_linkedlist(char *filename, stack_t *stack);
 
 void (*getfunc(char *s))(stack_t **stack,
                            unsigned int line_number);

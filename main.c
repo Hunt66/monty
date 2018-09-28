@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 
-	file_to_linkedlist(argv[1]);
+	file_to_linkedlist(argv[1], stack);
 
 	fflush(stdout);
 	for (current = h; current; line_number++)

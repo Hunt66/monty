@@ -5,7 +5,7 @@
  * @filename: path to file to open
  * Return: 0 if sucess else errcode
 */
-int file_to_linkedlist(char *filename)
+int file_to_linkedlist(char *filename, stack_t *stack)
 {
 	FILE *mnty_fp;
 	int op = 0;
@@ -38,6 +38,9 @@ int file_to_linkedlist(char *filename)
 					fprintf(stderr,
 						"L%d: usage: push integer\n",
 						line_number);
+					free(line_buff);
+					fclose(mnty_fp);
+					free_all(&stack, 1);
 					exit(EXIT_FAILURE);
 				}
 			}
