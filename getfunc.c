@@ -5,7 +5,7 @@
  * and returns the associated function to print an argument of that type
  *
  * @s: type char, the specifier passed in
- *
+ * @num: line number
  * Description: an array of structs is initialized with all possible specifiers
  * and the associated functions that will print arguments of that type
  *
@@ -13,8 +13,8 @@
  * function (via a function pointer) prints characters
 */
 
-void (*getfunc(char *s, unsigned int line_number))
-(stack_t **stack, unsigned int num)
+void (*getfunc(char *s, unsigned int line_number))(stack_t **stack,
+						   unsigned int num)
 {
 	int i = 0;
 

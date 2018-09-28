@@ -6,11 +6,12 @@
  * @stack: there in case of err for free
  * Return: 0 if success else errcode
 */
-int file_to_linkedlist(char *filename, stack_t *stack)
+void file_to_linkedlist(char *filename, stack_t *stack)
 {
 	FILE *mnty_fp;
 	int op = 0;
-	size_t line_number = 0, ln_bf_sz = 80;
+	unsigned int line_number = 0;
+	size_t ln_bf_sz = 80;
 	char *line_buff, *command, *num = NULL;
 
 	mnty_fp = fopen(filename, "r");
@@ -33,7 +34,7 @@ int file_to_linkedlist(char *filename, stack_t *stack)
 			if (num == NULL)
 			{
 				fprintf(stderr,
-					"L%zu: usage: push integer\n",
+					"L%d: usage: push integer\n",
 					line_number);
 				free(line_buff);
 				fclose(mnty_fp);
@@ -47,7 +48,6 @@ int file_to_linkedlist(char *filename, stack_t *stack)
 	}
 	fclose(mnty_fp);
 	free(line_buff);
-	return (0);
 }
 
 /**
