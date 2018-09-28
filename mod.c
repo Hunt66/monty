@@ -19,6 +19,14 @@ void mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 		return;
 	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n",
+			line_number);
+		free_all(stack, line_number);
+		exit(EXIT_FAILURE);
+		return;
+	}
 
 	current = *stack;
 	current = current->next;
