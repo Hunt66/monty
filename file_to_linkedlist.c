@@ -1,4 +1,33 @@
 #include "monty.h"
+
+/**
+ *_is_num - checks if num string is valid number
+ *@num: string to check
+ *Return: 0 if is num -1 if not
+ */
+
+
+int _is_num(char *num)
+{
+	int op = 0;
+
+	if (!num)
+		return (-1);
+	for (op = 0; num[op] != '\0'; op++)
+	{
+		if (num[op] == '-' && op == 0 && num[op+1])
+			continue;
+		if (num[op] > '9' || num[op] < '0' || num[op] ==
+		    '+' || num[op] == '-')
+		{
+			return (-1);
+		}
+	}
+	return (0);
+}
+
+
+
 /**
  * file_to_linkedlist - takes a file name and makes a linked list
  *
@@ -8,7 +37,6 @@
 int file_to_linkedlist(char *filename, stack_t *stack)
 {
 	FILE *mnty_fp;
-	int op = 0;
 	unsigned int line_number = 0;
 	size_t ln_bf_sz = 80;
 	char *line_buff;
@@ -21,35 +49,24 @@ int file_to_linkedlist(char *filename, stack_t *stack)
 	line_buff = malloc(ln_bf_sz * sizeof(char));
 	while (-1 != getline(&line_buff, &ln_bf_sz, mnty_fp))
 	{
-		op = 0;
 		num = NULL;
 		line_number++;
 		command = line_to_command(line_buff);
 		if (strcmp("push", command) == 0)
 		{
 			num = strtok(NULL, " \n");
-			for (op = 0; num[op] != '\0'; op++)
+			if (_is_num(num) == -1)
 			{
-				if (num[op] == '-' && op == 0 && num[op+1])
-					continue;
-				if (num[op] > '9' || num[op] < '0' || num[op] ==
-					'+' || num[op] == '-')
-				{
-					fprintf(stderr,
-						"L%d: usage: push integer\n",
-						line_number);
-					free(line_buff);
-					fclose(mnty_fp);
-					free_all(&stack, 1);
-					exit(EXIT_FAILURE);
-				}
+				fprintf(stderr,
+					"L%d: usage: push integer\n",
+					line_number);
+				free(line_buff);
+				fclose(mnty_fp);
+				free_all(&stack, 1);
+				exit(EXIT_FAILURE);
 			}
 		}
-		if (num)
-			op = atoi(num);
-		else
-			op = 0;
-		add_node_end(&h, command, op);
+		add_node_end(&h, command, atoi(num));
 	}
 	fclose(mnty_fp);
 	free(line_buff);

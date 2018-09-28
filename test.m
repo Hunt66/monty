@@ -1,6 +1,6 @@
-push                         adsf      6
+push 
 
-push 5
+push 
   push 2
 push 3
 
