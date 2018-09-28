@@ -33,7 +33,10 @@ int file_to_linkedlist(char *filename)
 				if (!op && (num[op] == '+' || num[op] == '-'))
 					continue;
 				if (num[op] > '9' || num[op] < '0')
+				{
 					fprintf(stderr, "L%d: usage: push integer\n", line_number);
+					exit(EXIT_FAILURE);
+				}
 			}
 		}
 		if (num)
@@ -73,4 +76,3 @@ char *line_to_command(char *line_buff)
 			command = "BLANK";
 		return (command);
 }
-
