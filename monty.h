@@ -90,7 +90,7 @@ void file_to_linkedlist(char *filename, stack_t *stack);
 
 
 void (*getfunc(char *s, unsigned int line_number))(stack_t **stack,
-                           unsigned int line_number);
+						   unsigned int line_number);
 
 
 
