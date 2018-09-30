@@ -14,11 +14,11 @@ void push(stack_t **stack, unsigned int line_number)
 	int num;
 	unsigned int i;
 	list_t *current = NULL;
+	stack_t *crnt = NULL;
 
 	current = h;
 	for (i = 1; i < line_number; i++)
 		current = current->next;
-
 	num = current->num;
 	new = malloc(sizeof(stack_t));
 	new->n = num;
@@ -36,7 +36,19 @@ void push(stack_t **stack, unsigned int line_number)
 		new->prev = NULL;
 		return;
 	}
-	(*stack)->prev = new;
-	new->next = *stack;
-	*stack = new;
+	if (current->stk_q == 0)
+	{
+		(*stack)->prev = new;
+		new->next = *stack;
+		*stack = new;
+	}
+	else
+	{
+		crnt = *stack;
+		while (crnt->next != NULL)
+			crnt = crnt->next;
+		crnt->next = new;
+		new->prev = crnt;
+		new->next = NULL;
+	}
 }

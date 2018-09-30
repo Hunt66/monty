@@ -34,6 +34,8 @@ void (*getfunc(char *s, unsigned int line_number))(stack_t **stack,
 			{"pstr", pstr},
 			{"rotl", rotl},
 			{"rotr", rotr},
+			{"stack", stack},
+			{"queue", queue},
 			{"#", comment},
 			{'\0', NULL}
 		};

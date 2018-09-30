@@ -29,6 +29,7 @@ list_t *add_node_end(list_t **head, const char *str, int push_num)
 		exit(EXIT_FAILURE);
 	}
 	new->str = strdup(str);
+	new->stk_q = 0;
 	while (str[i])
 		i++;
 	new->len = i;
