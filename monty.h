@@ -48,6 +48,7 @@ typedef struct instruction_s
  * struct list_s - singly linked list
  * @str: instruction code - (malloc'ed string)
  * @len: length of the string
+ * @stk_q: queue length
  * @num: line number in file for errors handling
  * @next: points to the next node
  * @prev: points to the next node

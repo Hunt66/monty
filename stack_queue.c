@@ -37,13 +37,13 @@ void queue(stack_t **stack, unsigned int line_number)
 {
 	list_t *current = NULL;
 
-        (void) stack;
-        (void) line_number;
+		(void) stack;
+		(void) line_number;
 
-        current = h;
-        while (current != NULL)
-        {
-                current->stk_q = 1;
-                current = current->next;
-        }
+		current = h;
+		while (current != NULL)
+		{
+			current->stk_q = 1;
+			current = current->next;
+		}
 }
